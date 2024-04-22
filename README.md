@@ -3,8 +3,8 @@
 
 로컬 DB연결
 
-spring.datasource.url=jdbc:mysql://localhost:**/first_web
-spring.datasource.username=**
-spring.datasource.password=****
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:**/first_web<br>
+spring.datasource.username= *****<br>
+spring.datasource.password=****<br>
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver<br>
 
