@@ -15,3 +15,5 @@ implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 주의할점 : 타임리프 설치 전엔 html 파일을 resources/static 에서 파일을 찾았으나 설치 이후에는 resources/templates 에서 파일을 검색하는 구조로 변경
 <br>
 관련 문서 : https://www.baeldung.com/spring-thymeleaf-template-directory
+
+[0423]
