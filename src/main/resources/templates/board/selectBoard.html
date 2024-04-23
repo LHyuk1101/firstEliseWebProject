@@ -12,9 +12,8 @@
 <div th:replace="~{ import/nav.html::navbar}"></div>
 
 <div class="mainBoard">
-    <h2 th:text="${boards.get(0).getBoardTitle()}">기본 게시판 제목</h2>
-    <h4 th:text="${boards.get(0).getBoardIntroduce()}">기본 게시판 설명</h4>
-
+    <h2 th:text="${selectBoard.get().getBoardTitle()}">기본 게시판 제목</h2>
+    <h4 th:text="${selectBoard.get().getBoardIntroduce()}">기본 게시판 설명</h4>
 </div>
 
 <form action="/writePost">
