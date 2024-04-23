@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CREATE</title>
+    <link th:href="@{/board.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ import/nav.html::navbar}"></div>
+
+<form action="/update" method="post">
+    <input name="boardId" th:value="${updateBoard.getBoardId()}" style="display:none">
+    <h4>수정할 제목(30자 이내) : </h4>
+    <input name="boardTitle" th:value="${updateBoard.getBoardTitle()}">
+    <h4>수정할 소개글(100자 이내) : </h4>
+    <input name="boardIntro" th:value="${updateBoard.getBoardIntroduce()}">
+    <button type="submit" style="display:block">수정하기</button>
+</form>
+</body>
+</html>

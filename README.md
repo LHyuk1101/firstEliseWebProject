@@ -16,6 +16,8 @@ implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 <br>
 관련 문서 : https://www.baeldung.com/spring-thymeleaf-template-directory
 
-[0423]
-게시판 추가 기능 및 
-목록내 해당 게시판 클릭 시 화면 내 게시판 타이틀, 소개 변경되게 개발
+[0423] <br>
+게시판[Board]
+CRUD구현 완료 
+D(Delete) 진행시 "정말 삭제 하시겠습니까?" 팝업 노출로<br>
+사후 검증 로직까지 추가하였음
