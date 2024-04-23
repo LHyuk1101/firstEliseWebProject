@@ -17,3 +17,5 @@ implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 관련 문서 : https://www.baeldung.com/spring-thymeleaf-template-directory
 
 [0423]
+게시판 추가 기능 및 
+목록내 해당 게시판 클릭 시 화면 내 게시판 타이틀, 소개 변경되게 개발
