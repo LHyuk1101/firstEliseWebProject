@@ -22,8 +22,6 @@
     <button type="submit">글쓰기</button>
 </form>
 
-
-
 <div class="boardList">
     <h3 class="listTitle">게시판 목록</h3>
     <ul class="boards" th:each="roof : ${boards}">
@@ -47,7 +45,6 @@
                 })
                 .catch(error => console.error('Error:', error)); // 오류 처리
         }
-        // 사용자가 '취소'를 클릭했다면, 아무 것도 하지 않습니다.
     }
 </script>
 </body>

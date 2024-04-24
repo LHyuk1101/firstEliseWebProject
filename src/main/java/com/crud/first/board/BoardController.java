@@ -25,8 +25,10 @@ public class BoardController {
 
   @GetMapping("/board/{id}")
   public String selectBoard(Model model, @PathVariable Long id){
+
     List<Board> result = boardRepository.findAll();
     model.addAttribute("boards",result);
+
     Optional<Board> idNum = boardRepository.findById(id);
 
     if (idNum.isPresent()){
