@@ -21,3 +21,8 @@ implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 CRUD구현 완료 
 D(Delete) 진행시 "정말 삭제 하시겠습니까?" 팝업 노출로<br>
 사후 검증 로직까지 추가하였음
+
+[0424]<br>
+Board <-> Post 연관관계 매핑작업 완료(게시판 삭제시 연결된 게시글 삭제) <br>
+회원가입, 로그인 로직구현 <br>
+관리자 권한 유저만 게시판에 대한 C,U,D 실행하도록 개발
