@@ -17,6 +17,11 @@ public class SecurityConfig {
     http.csrf((csrf) -> csrf.disable());
 
     http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/**").permitAll());
+
+    http.formLogin((formLogin) -> formLogin.loginPage("/login").defaultSuccessUrl("/board"));
+
+    http.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/"));
+
     return http.build();
   }
 

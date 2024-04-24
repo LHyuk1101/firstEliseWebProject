@@ -1,8 +1,14 @@
 package com.crud.first.member;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Member {
 
   @Id
@@ -13,7 +19,7 @@ public class Member {
   private String displayName; //유저 이름
 
   @Column(nullable = false, unique = true)
-  private String userId; // 유저 아이디
+  private String username; // 유저 아이디
 
   @Column(nullable = false)
   private String password; // 비밀번호
@@ -21,9 +27,9 @@ public class Member {
   @Column(nullable = false)
   private String petName; // 동물이름
 
-  public Member(String displayName, String userId, String password, String petName) {
+  public Member(String displayName, String username, String password, String petName) {
     this.displayName = displayName;
-    this.userId = userId;
+    this.username = username;
     this.password = password;
     this.petName = petName;
   }
