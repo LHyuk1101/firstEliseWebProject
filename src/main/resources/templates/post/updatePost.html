@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UPDATE</title>
+    <link th:href="@{/post.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ import/nav.html::navbar}"></div>
+<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
+<form action="/updatePost" method="post">
+    <input name="id" th:value="${updatePost.getId()}" style="display:none">
+    <input name="writer" th:value="${updatePost.getWriter()}" style="display:none">
+    <input name="boardId" th:value="${updatePost.getBoard().getBoardId()}" style="display:none">
+    <h4>수정할 제목(30자 이내) </h4>
+    <input name="postTitle" th:value="${updatePost.getPostTitle()}">
+    <h4>수정할 내용(1000자 이내) </h4>
+    <input name="postContents" th:value="${updatePost.getPostContents()}">
+    <button type="submit" style="display:block">수정하기</button>
+</form>
+</body>
+</html>

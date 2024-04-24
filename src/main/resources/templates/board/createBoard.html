@@ -10,6 +10,7 @@
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
+<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
     <form action="/createBoard" method="post">
         <h4>게시판 제목(30자 이내) : </h4>
         <input name="boardTitle">

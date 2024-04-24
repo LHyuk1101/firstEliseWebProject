@@ -5,13 +5,11 @@ import com.crud.first.board.BoardRepository;
 import com.crud.first.board.BoardService;
 import com.crud.first.member.CustomUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,22 +25,52 @@ public class PostController {
 
   @GetMapping("/writePost")
   public String writePost(Model model) {
-    List<Board> result = boardRepository.findAll();
-    model.addAttribute("boards",result);
+    model.addAttribute("boards",boardService.findAll());
     return "post/writePost.html";
   }
 
   @PostMapping("/createPost")
   public String post(@RequestParam("boards") Long boardId,@RequestParam String postTitle,@RequestParam String postContents, Authentication auth) {
-    Post post = new Post(postTitle, postContents);
-    CustomUser customUser = (CustomUser) auth.getPrincipal();
-    post.setWriter(customUser.getUsername());
-    Board board = boardService.findBoardById(boardId);
-    post.setBoard(board);
-    board.addPost(post);
-    postRepository.save(post);
-    return "redirect:/board";
+    postService.createPost(boardId,postTitle,postContents,auth);
+    return "redirect:/board/"+boardService.findBoardById(boardId).getBoardId();
   }
+
+  @GetMapping("/update/post/{id}")
+  public String updatedPost( Model model, @PathVariable Long id) {
+    model.addAttribute("boards",boardService.findAll());
+
+    if (postService.getPostsById(id).isPresent()){
+      model.addAttribute("updatePost",postService.getPostsById(id).get());
+      return "post/updatePost.html";
+    }else {
+      return "redirect:/post/"+postService.getPostsById(id).get().getId();
+    }
+  }
+
+  @PostMapping("/updatePost")
+  public String updatePost(@RequestParam Long id,@RequestParam Long boardId,@RequestParam String postTitle,@RequestParam String postContents, Authentication auth) {
+    postService.updatePost(id,boardId,postTitle,postContents,auth);
+    return "redirect:/post/"+id;
+  }
+
+
+
+  @GetMapping("/post/{id}")
+  public String postDetail( Model model, @PathVariable Long id) {
+    model.addAttribute("boards",boardService.findAll());
+    if (postService.getPostsById(id).isPresent()){
+      model.addAttribute("posts",postService.getPostsById(id).get());
+    }
+    return "post/postDetail.html";
+  }
+
+  @DeleteMapping("/deletePost")
+  public ResponseEntity<String> deletePost(@RequestParam Long id) {
+    postRepository.deleteById(id);
+    return ResponseEntity.status(200).body("삭제완료");
+  }
+
+
 
 
 }

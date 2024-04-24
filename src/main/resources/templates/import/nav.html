@@ -1,6 +1,5 @@
 <div class="nav" th:fragment="navbar">
-    <a href="/board" class="logo"><h1>🏡</h1></a>
-
+    <a th:href="@{'/board/' + ${boards.get(0).getBoardId}}" class="logo"><h1>🏡</h1></a>
     <form method="post" action="/logout" sec:authorize="isAuthenticated()">
         <button type="submit">로그아웃</button>
     </form>

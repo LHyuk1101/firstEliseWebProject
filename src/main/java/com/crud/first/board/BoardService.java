@@ -3,6 +3,8 @@ package com.crud.first.board;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -25,6 +27,10 @@ public class BoardService {
 
   public Board saveBoard(Board board){
     return boardRepository.save(board);
+  }
+
+  public List<Board> findAll() {
+    return boardRepository.findAll();
   }
 
 }

@@ -29,10 +29,13 @@ public class MemberService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
     Optional<Member> result = memberRepository.findByUsername(username);
+
     if (result.isEmpty()){
       throw new UsernameNotFoundException("그런 아이디 없는데요?");
     }
+
     Member member = result.get();
 
     List<GrantedAuthority> authorities = new ArrayList<>();

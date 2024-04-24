@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -34,6 +36,11 @@ public class Post {
   private Board board;
 
   public Post(String postTitle,String postContents){
+    this.postTitle = postTitle;
+    this.postContents = postContents;
+  }
+  public Post(Long id, String postTitle, String postContents){
+    this.id = id;
     this.postTitle = postTitle;
     this.postContents = postContents;
   }
