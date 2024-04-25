@@ -21,9 +21,6 @@
 
     <a th:href="@{'/update/' + ${boards.get(0).getBoardId}}" sec:authorize="hasAuthority('관리자')">게시판 제목,설명 수정하기</a>
     <button class="btn" onclick="confirmDelete()" sec:authorize="hasAuthority('관리자')">게시판 삭제하기</button>
-
-
-
 </div>
 
 <div class="boardList">

@@ -10,9 +10,10 @@
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
-
+<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
 <form action="/createPost" method="post">
     <h4>글을 작성할 게시판을 선택해 주세요</h4>
+
     <select name="boards" >
         <option value="">게시판 선택</option>
         <option th:each="roof : ${boards}" th:value="${roof.getBoardId()}" th:text="${roof.getBoardTitle()}" name="boardId">옵션</option>

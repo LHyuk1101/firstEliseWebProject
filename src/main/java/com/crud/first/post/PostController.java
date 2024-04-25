@@ -3,7 +3,9 @@ package com.crud.first.post;
 import com.crud.first.board.Board;
 import com.crud.first.board.BoardRepository;
 import com.crud.first.board.BoardService;
+import com.crud.first.comment.CommentService;
 import com.crud.first.member.CustomUser;
+import com.crud.first.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -19,9 +21,10 @@ import java.util.Optional;
 public class PostController {
 
   private final PostRepository postRepository;
-  private final BoardRepository boardRepository;
+  private final MemberService memberService;
   private final PostService postService;
   private final BoardService boardService;
+  private final CommentService commentService;
 
   @GetMapping("/writePost")
   public String writePost(Model model) {
@@ -60,6 +63,7 @@ public class PostController {
     model.addAttribute("boards",boardService.findAll());
     if (postService.getPostsById(id).isPresent()){
       model.addAttribute("posts",postService.getPostsById(id).get());
+      model.addAttribute("comments",commentService.getCommentsByPostId(id));
     }
     return "post/postDetail.html";
   }

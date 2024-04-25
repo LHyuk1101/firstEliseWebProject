@@ -10,7 +10,11 @@
 </head>
 <body>
 <div th:replace="~{import/nav.html::navbar}"></div>
-<a href="javascript:history.go(-1)" style="display:block">게시글 목록으로</a>
+
+<div>
+<a th:href="@{'/board/' + ${posts.getBoard().getBoardId()}}" style="display:block">게시글 목록으로</a>
+
+
 <label>작성자 :
 <h4 style="display:inline" th:text="${posts.getWriter()}">작성자</h4></label>
 
@@ -19,18 +23,44 @@
 
 <label style="display:block">내용 :
 <h4 style="display:inline" th:text="${posts.getPostContents()}">내용</h4></label>
+</div>
 
+
+<div>
+    <ul th:each="commentRoof : ${comments}" style="list-style:none;">
+        <h4 style="display:inline" th:text="${commentRoof.getWriter()}+' : '">작성자</h4>
+        <li th:text="${commentRoof.getCommentContents()}" style="display:inline">내용</li>
+
+        <div style="display:inline">
+            <a th:href="@{'/update/comment/' + ${commentRoof.getId()}}">댓글 수정</a>
+        </div>
+    </ul>
+</div>
+
+
+
+<div>
+<form action="/createComment" method="post">
+    <input name="postId" th:value="${posts.getId()}" style="display:none">
+    <input name="commentContents" placeholder="댓글 내용을 입력하세요">
+    <button type="submit">댓글쓰기</button>
+</form>
+</div>
+
+
+
+<div>
 <a th:href="@{'/update/post/' + ${posts.getId()}}" >글 수정하기</a>
-
 <button class="btn" onclick="confirmDelete()" >글 삭제하기</button>
-
+</div>
 
 <script>
+
     function confirmDelete() {
         var boardId = [[${posts.getBoard().getBoardId()}]];
 
         // 사용자에게 확인을 요청하는 대화 상자를 띄웁니다.
-        var result = confirm("정말 삭제하시겠습니까?");
+        var result = confirm("정말 게시글을 삭제하시겠습니까?");
         if (result) {
             // 사용자가 'OK'를 클릭했다면, 삭제 요청을 보냅니다.
             fetch('/deletePost?id=[[${posts.getId()}]]', {method: 'DELETE'})

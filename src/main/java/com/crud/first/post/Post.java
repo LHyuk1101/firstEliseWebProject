@@ -2,12 +2,14 @@ package com.crud.first.post;
 
 
 import com.crud.first.board.Board;
+import com.crud.first.comment.Comment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +32,9 @@ public class Post {
   @Column(nullable = false, length = 1000)
   private String postContents;
 
+  @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+  List<Comment> comments = new ArrayList<>();
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="board_id",
   foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
@@ -43,6 +48,16 @@ public class Post {
     this.id = id;
     this.postTitle = postTitle;
     this.postContents = postContents;
+  }
+
+  public void addComment(Comment comment) {
+    comments.add(comment);
+    comment.setPost(this);
+  }
+
+  public void removeComment(Comment comment) {
+    comments.remove(comment);
+    comment.setPost(null);
   }
 
 
