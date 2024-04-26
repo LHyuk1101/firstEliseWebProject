@@ -6,27 +6,26 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DETAIL</title>
+    <link th:href="@{/postDetail.css}" rel="stylesheet">
     <link th:href="@{/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{import/nav.html::navbar}"></div>
 
-<div>
-<a th:href="@{'/board/' + ${posts.getBoard().getBoardId()}}" style="display:block">게시글 목록으로</a>
 
-
+<div id="postDetail">
+    <a th:href="@{'/board/' + ${posts.getBoard().getBoardId()}}" style="display:block">게시글 목록으로</a>
 <label>작성자 :
 <h4 style="display:inline" th:text="${posts.getWriter()}">작성자</h4></label>
-
 <label style="display:block">제목 :
     <h4 style="display:inline" th:text="${posts.getPostTitle()}">내용</h4></label>
-
 <label style="display:block">내용 :
 <h4 style="display:inline" th:text="${posts.getPostContents()}">내용</h4></label>
 </div>
 
 
-<div>
+<div id="postComments">
+    <h3>댓글 목록</h3>
     <ul th:each="commentRoof : ${comments}" style="list-style:none;">
         <h4 style="display:inline" th:text="${commentRoof.getWriter()}+' : '">작성자</h4>
         <li th:text="${commentRoof.getCommentContents()}" style="display:inline" >내용</li>
@@ -37,9 +36,7 @@
     </ul>
 </div>
 
-
-
-<div>
+<div id="createPostComment">
 <form action="/createComment" method="post">
     <input name="postId" th:value="${posts.getId()}" style="display:none">
     <input name="commentContents" placeholder="댓글 내용을 입력하세요">
@@ -47,9 +44,7 @@
 </form>
 </div>
 
-
-
-<div th:if="${posts.getWriter() == #authentication.name}" sec:authorize="isAuthenticated()">
+<div th:if="${posts.getWriter() == #authentication.name}" sec:authorize="isAuthenticated()" id="updatePostArea">
 <a th:href="@{'/update/post/' + ${posts.getId()}}" >글 수정하기</a>
 <button class="btn" onclick="confirmDelete()" >글 삭제하기</button>
 </div>

@@ -29,5 +29,10 @@ Board <-> Post 연관관계 매핑작업 완료(게시판 삭제시 연결된 �
 
 [0425]<br>
 Post CRUD 구현완료
-
 Comment CRUD 구현완료
+
+[0426]<br>
+게시글 작성자만 U,D 가능하게 변경 <br>
+댓글 작성자만 U,D 가능하게 변경 <br>
+Board CRU 영역 css적용
+Post CRU 영역 css적용

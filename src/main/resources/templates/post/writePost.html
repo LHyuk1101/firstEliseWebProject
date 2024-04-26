@@ -6,24 +6,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CREATE</title>
+    <link th:href="@{/writePost.css}" rel="stylesheet">
     <link th:href="@{/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
-<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
-<form action="/createPost" method="post">
-    <h4>글을 작성할 게시판을 선택해 주세요</h4>
 
-    <select name="boards" >
-        <option value="">게시판 선택</option>
-        <option th:each="roof : ${boards}" th:value="${roof.getBoardId()}" th:text="${roof.getBoardTitle()}" name="boardId">옵션</option>
-    </select>
-
-    <h4>게시글 제목(30자 이내) </h4>
-    <input name="postTitle">
-    <h4>게시글 내용(1000자 이내) </h4>
-    <input name="postContents">
-    <button type="submit" style="display:block">작성하기</button>
-</form>
+<div id="createPostForm">
+    <div class="back">
+        <a href="javascript:history.go(-1)" style="display:block">목록으로</a>
+    </div>
+    <div class="FormPostCreate">
+        <form action="/createPost" method="post">
+            <h4>글을 작성할 게시판을 선택해 주세요</h4>
+            <select name="boards" >
+                <option value="">게시판 선택</option>
+                <option th:each="roof : ${boards}" th:value="${roof.getBoardId()}" th:text="${roof.getBoardTitle()}" name="boardId">옵션</option>
+            </select>
+            <h4>게시글 제목(30자 이내) </h4>
+            <input name="postTitle">
+            <h4>게시글 내용(1000자 이내) </h4>
+            <input name="postContents">
+            <button type="submit" style="display:block">작성하기</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -6,25 +6,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UPDATE</title>
+    <link th:href="@{/updatePost.css}" rel="stylesheet">
     <link th:href="@{/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
 
-<div id="PostList">
-<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
+<div id="updatePostForm">
+    <div class="back">
+        <a href="javascript:history.go(-1)" style="display:block">목록으로</a>
+    </div>
+    <div class="FormPostUpdate">
+        <form action="/updatePost" method="post" id="updateBoardForm">
+            <input name="id" th:value="${updatePost.getId()}" style="display:none">
+            <input name="writer" th:value="${updatePost.getWriter()}" style="display:none">
+            <input name="boardId" th:value="${updatePost.getBoard().getBoardId()}" style="display:none">
+            <h4>수정할 제목(30자 이내) </h4>
+            <input name="postTitle" th:value="${updatePost.getPostTitle()}">
+            <h4>수정할 내용(1000자 이내) </h4>
+            <input name="postContents" th:value="${updatePost.getPostContents()}">
+            <button type="submit" style="display:block" id="update">수정하기</button>
+        </form>
+    </div>
 </div>
-
-<form action="/updatePost" method="post" id="updateBoardForm">
-    <input name="id" th:value="${updatePost.getId()}" style="display:none">
-    <input name="writer" th:value="${updatePost.getWriter()}" style="display:none">
-    <input name="boardId" th:value="${updatePost.getBoard().getBoardId()}" style="display:none">
-    <h4>수정할 제목(30자 이내) </h4>
-    <input name="postTitle" th:value="${updatePost.getPostTitle()}">
-    <h4>수정할 내용(1000자 이내) </h4>
-    <input name="postContents" th:value="${updatePost.getPostContents()}">
-    <button type="submit" style="display:block" id="update">수정하기</button>
-</form>
-
 </body>
 </html>
