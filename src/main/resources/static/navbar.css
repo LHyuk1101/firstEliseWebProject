@@ -1,0 +1,47 @@
+
+/* Navbar 스타일 */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #007bff; /* Navbar 배경색, 메인 CSS의 버튼 색상과 일치 */
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav .logo {
+    color: white; /* 로고 색상 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    margin-right: 10px; /* 로고와 나머지 요소 사이의 여백 */
+}
+
+.nav h1, .nav h5 {
+    color: white; /* 텍스트 색상 */
+    margin: 0 10px; /* 요소들 사이의 여백 */
+}
+
+.nav form {
+    display: flex;
+    align-items: center;
+}
+
+.nav input, .nav button {
+    margin: 0 5px;
+}
+
+.nav button {
+    background-color: #0056b3; /* 버튼 색상, 메인 CSS의 버튼 호버 색상과 일치 */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav button:hover {
+    background-color: #004080; /* 버튼 호버 시 색상 변경 */
+}

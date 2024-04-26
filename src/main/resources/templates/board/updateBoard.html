@@ -5,19 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CREATE</title>
-    <link th:href="@{/board.css}" rel="stylesheet">
+    <title>게시판 수정</title>
+    <link th:href="@{/updateBoard.css}" rel="stylesheet">
+    <link th:href="@{/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
-<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
-<form action="/update" method="post">
-    <input name="boardId" th:value="${updateBoard.getBoardId()}" style="display:none">
-    <h4>수정할 제목(30자 이내) : </h4>
-    <input name="boardTitle" th:value="${updateBoard.getBoardTitle()}">
-    <h4>수정할 소개글(100자 이내) : </h4>
-    <input name="boardIntro" th:value="${updateBoard.getBoardIntroduce()}">
-    <button type="submit" style="display:block">수정하기</button>
-</form>
+
+<div class="updateBoard">
+    <a href="javascript:history.back()" style="display:block">목록으로</a>
+    <form th:action="@{/update}" method="post">
+        <input type="hidden" name="boardId" th:value="${updateBoard.boardId}">
+        <h4>수정할 제목(30자 이내) : </h4>
+        <input type="text" name="boardTitle" th:value="${updateBoard.boardTitle}" maxlength="30">
+        <h4>수정할 소개글(100자 이내) : </h4>
+        <input type="text" name="boardIntro" th:value="${updateBoard.boardIntroduce}" maxlength="100">
+        <button type="submit" style="display:block">수정하기</button>
+    </form>
+</div>
 </body>
 </html>

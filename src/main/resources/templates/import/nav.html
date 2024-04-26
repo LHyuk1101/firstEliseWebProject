@@ -1,10 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HELLO</title>
+    <link th:href="@{/navbar.css}" rel="stylesheet">
+</head>
+<body>
 <div class="nav" th:fragment="navbar">
-    <a th:href="@{'/board/' + ${boards.get(0).getBoardId}}" class="logo"><h1>🏡</h1></a>
-    <form method="post" action="/logout" sec:authorize="isAuthenticated()">
-        <button type="submit">로그아웃</button>
-    </form>
-
-
+    <a th:href="@{'/board/' + ${boards.get(0).getBoardId}}" class="logo"><h3>홈</h3></a>
     <h1>여기서 우리는 소통해요</h1>
 
     <span sec:authorize="isAuthenticated()">
@@ -12,9 +18,14 @@
         <h5 sec:authentication="name" style="display:inline;"></h5>
         <h5 style="display:inline">&nbsp;님 환영합니다!]&nbsp;</h5>
     </span>
+    <form method="post" action="/logout" sec:authorize="isAuthenticated()">
+        <button type="submit">로그아웃</button>
+    </form>
 
-    <form method="post">
-        <input name="searchPost" style="display:inline">
+    <form method="post" style="display: flex;">
+        <input name="searchPost" style="margin-right: 10px;">
         <button type="submit">검색</button>
     </form>
 </div>
+</body>
+</html>

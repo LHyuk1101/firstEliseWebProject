@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MAIN</title>
-    <link th:href="@{/board.css}" rel="stylesheet">
+    <link th:href="@{/selectBoard.css}" rel="stylesheet">
+    <link th:href="@{/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{ import/nav.html::navbar}"></div>
@@ -15,9 +16,12 @@
     <h2 th:text="${selectBoard.getBoardTitle()}">기본 게시판 제목</h2>
     <h4 th:text="${selectBoard.getBoardIntroduce()}">기본 게시판 설명</h4>
 
+    <div class="postList">
+        <h3>글 목록</h3>
     <ol class="posts" th:each="postRoof : ${posts}">
-        <a th:href="@{'/post/' + ${postRoof.id}}"><li th:text="${postRoof.postTitle}">글 제목</li></a>
+        <a th:href="@{'/post/' + ${postRoof.id}}" style="display:inline"><li th:text="${postRoof.postTitle}">글 제목</li></a>
     </ol>
+    </div>
 
     <form action="/writePost" method="get">
         <button type="submit">글쓰기</button>
@@ -34,12 +38,15 @@
         <a th:href="@{'/board/'+${roof.getBoardId()}}"><li th:text="${roof.getBoardTitle()}"> 타이틀 </li></a>
     </ul>
 </div>
+
 <form action="/create" method="get" sec:authorize="hasAuthority('관리자')">
     <button>게시판 추가하기</button>
 </form>
 
 <script>
     function confirmDelete() {
+    var boardId = [[${boards.getFirst().getBoardId()}]];
+
         // 사용자에게 확인을 요청하는 대화 상자를 띄웁니다.
         var result = confirm("정말 삭제하시겠습니까?");
         if (result) {
@@ -47,7 +54,8 @@
             fetch('/deleteBoard?id=[[${selectBoard.getBoardId()}]]', {method: 'DELETE'})
                 .then(r => r.text())
                 .then(() => {
-                    location.reload(); // 성공적으로 삭제되면 페이지를 새로고침합니다.
+                    window.location.href = '/board/' + boardId;
+
                 })
                 .catch(error => console.error('Error:', error)); // 오류 처리
         }
