@@ -36,3 +36,6 @@ Comment CRUD 구현완료
 댓글 작성자만 U,D 가능하게 변경 <br>
 Board CRU 영역 css적용
 Post CRU 영역 css적용
+
+[0429]<br>
+댓글 업데이트창 css적용 - 기능 적용되는곳에 대한 전체 css는 적용
