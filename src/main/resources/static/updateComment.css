@@ -55,6 +55,7 @@
 .UpdateFormComment .btn {
     background-color: #dc3545; /* 삭제 버튼 색상 */
     margin: 0 auto;
+    width:25%;
 }
 
 .UpdateFormComment .btn:hover {
