@@ -1,4 +1,11 @@
 /* postDetail 페이지 스타일 */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* 배경색 */
+}
+
 #postDetail {
     margin-top: 100px; /* Navbar와의 여백 */
     padding: 20px;

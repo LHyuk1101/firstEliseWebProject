@@ -1,4 +1,10 @@
 /* updateComment.html 스타일 */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* 배경색 */
+}
+
 #back a {
     color: #007bff; /* 링크 색상 */
     text-decoration: none; /* 링크 밑줄 제거 */
