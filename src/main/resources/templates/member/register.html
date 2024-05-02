@@ -6,21 +6,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>REGISTER</title>
-<!--    <link th:href="@{/main.css}" rel="stylesheet">-->
+    <link rel="stylesheet" href="/register.css">
 </head>
 <body>
+<div class="title">
     <h2>우리 이제 함께해요</h2>
+</div>
+<div class="back">
     <a href="javascript:history.go(-1)" style="display:block">싫은데요?</a>
+</div>
+<div class="registeForm">
     <form action="/member" method="post">
         <h4>이름 : </h4>
-        <input name="displayName" placeholder="이름을 입력해 주세요." >
+        <input name="displayName" placeholder="이름을 입력해 주세요." required >
         <h4 >아이디 : </h4>
-        <input name="username" placeholder="아이디를 입력해 주세요">
+        <input name="username" placeholder="아이디를 입력해 주세요" required>
         <h4>비밀번호 : </h4>
-        <input name="password" placeholder="비밀번호를 입력해 주세요" type="password">
+        <input name="password" placeholder="비밀번호를 입력해 주세요" type="password" required>
         <h4>반려동물 이름 : </h4>
-        <input name="petName" placeholder="키우고있는 반려동물 이름을 입력해주세요." size="40">
+        <input name="petName" placeholder="키우고있는 반려동물 이름을 입력해주세요." size="40" required>
         <button type="submit" style="display:block">가입하기</button>
     </form>
+</div>
 </body>
 </html>

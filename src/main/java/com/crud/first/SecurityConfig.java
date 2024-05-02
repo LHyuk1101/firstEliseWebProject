@@ -44,8 +44,9 @@ public class SecurityConfig {
     http.csrf((csrf) -> csrf.disable());
     // 요청 권한 설정
     http.authorizeHttpRequests((authorize) -> {
-      authorize.requestMatchers("/","home.css","/dog.png").permitAll(); // "/" 경로는 모든 사용자에게 허용
-      authorize.anyRequest().authenticated(); // 그 외 모든 요청은 인증된 사용자만 접근 가능
+      authorize.requestMatchers("/","/register","/member").permitAll();
+      authorize.requestMatchers("home.css", "/dog.png", "register.css").permitAll();
+      authorize.anyRequest().authenticated(); // 위 2줄 외 모든 요청은 인증된 사용자만 접근 가능
     });
 
     // 로그인 설정

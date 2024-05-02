@@ -1,0 +1,65 @@
+/* 기본 바디 스타일링 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* 제목 스타일링 */
+.title h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* 이전 페이지 링크 스타일 */
+.back a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+/* 폼 스타일링 */
+.registeForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.registeForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registeForm h4 {
+    margin: 10px 0;
+}
+
+.registeForm input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 버튼 스타일 */
+.registeForm button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.registeForm button:hover {
+    background-color: #0056b3;
+}
