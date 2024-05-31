@@ -42,6 +42,7 @@ public class SecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     // CSRF 보호 비활성화
     http.csrf((csrf) -> csrf.disable());
+
     // 요청 권한 설정
     http.authorizeHttpRequests((authorize) -> {
       authorize.requestMatchers("/","/register","/member").permitAll();

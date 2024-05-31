@@ -16,7 +16,7 @@ public class Member {
   private Long id;
 
   @Column(nullable = false)
-  private String displayName; //유저 이름
+  private String displayName; //유저 이름 실명
 
   @Column(nullable = false, unique = true)
   private String username; // 유저 아이디
