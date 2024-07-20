@@ -1,0 +1,69 @@
+/* updateComment.html 스타일 */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* 배경색 */
+}
+
+#back a {
+    color: #007bff; /* 링크 색상 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    display: block; /* 블록 레벨 요소로 만들어 줌 */
+    margin: 100px auto 20px; /* Navbar와 겹치지 않도록 상단 여백 설정 및 가운데 정렬 */
+    width: fit-content; /* 내용의 너비에 맞게 조정 */
+}
+
+.UpdateFormComment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px; /* 추가적인 여백 설정 */
+}
+
+.UpdateFormComment form {
+    width: 25%; /* 폼의 너비 */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    background-color: #f8f9fa; /* 배경색 */
+}
+
+.UpdateFormComment h4 {
+    margin-top: 0;
+    margin-bottom: 20px; /* 제목과 입력창 사이의 여백 */
+}
+
+.UpdateFormComment input,
+.UpdateFormComment button {
+    width: 100%; /* 폭을 폼에 맞춤 */
+    padding: 10px;
+    margin-bottom: 20px; /* 요소들 사이의 여백 */
+    border: 1px solid #ced4da; /* 테두리 색상 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    box-sizing: border-box;
+}
+
+.UpdateFormComment button {
+    background-color: #007bff; /* 버튼 색상 */
+    color: white; /* 버튼 내 텍스트 색상 */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 호버 효과를 위한 전환 */
+    width: 100%;
+}
+
+.UpdateFormComment button:hover {
+    background-color: #0056b3; /* 버튼 호버 시 색상 변경 */
+}
+
+/* 삭제 버튼 특별 스타일 */
+.UpdateFormComment .btn {
+    background-color: #dc3545; /* 삭제 버튼 색상 */
+    margin: 0 auto;
+    width:25%;
+}
+
+.UpdateFormComment .btn:hover {
+    background-color: #c82333; /* 삭제 버튼 호버 시 색상 */
+}

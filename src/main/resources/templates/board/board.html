@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MAIN</title>
+    <link th:href="@{/board.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ import/nav.html::navbar}"></div>
+
+<div class="mainBoard">
+    <h2 th:text="${boards.get(0).getBoardTitle()}">기본 게시판 제목</h2>
+    <h4 th:text="${boards.get(0).getBoardIntroduce()}">기본 게시판 설명</h4>
+
+    <form action="/writePost" method="get">
+        <button type="submit">글쓰기</button>
+    </form>
+
+    <a th:href="@{'/update/' + ${boards.get(0).getBoardId}}" sec:authorize="hasAuthority('관리자')">게시판 제목,설명 수정하기</a>
+    <button class="btn" onclick="confirmDelete()" sec:authorize="hasAuthority('관리자')">게시판 삭제하기</button>
+</div>
+
+<div class="boardList">
+    <h3 class="listTitle">게시판 목록</h3>
+    <ul class="boards" th:each="roof : ${boards}">
+        <a th:href="@{'/board/'+${roof.getBoardId}}"><li th:text="${roof.getBoardTitle()}"> 타이틀 </li></a>
+    </ul>
+</div>
+<form action="/create" method="get" sec:authorize="hasAuthority('관리자')">
+    <button>게시판 추가하기</button>
+</form>
+
+<script>
+    function confirmDelete() {
+        // 사용자에게 확인을 요청하는 대화 상자를 띄웁니다.
+        var result = confirm("정말 삭제 하시겠습니까?");
+        if (result) {
+            // 사용자가 'OK'를 클릭했다면, 삭제 요청을 보냅니다.
+            fetch('/deleteBoard?id=[[${boards.get(0).getBoardId}]]', {method: 'DELETE'})
+                .then(r => r.text())
+                .then(() => {
+                    location.reload(); // 성공적으로 삭제되면 페이지를 새로고침합니다.
+                })
+                .catch(error => console.error('Error:', error)); // 오류 처리
+        }
+    }
+</script>
+</body>
+</html>

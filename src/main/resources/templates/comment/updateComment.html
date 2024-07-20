@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UPDATE</title>
+    <link th:href="@{/navbar.css}" rel="stylesheet">
+    <link th:href="@{/updateComment.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ import/nav.html::navbar}"></div>
+
+<div id="back">
+<a href="javascript:history.go(-1)" style="display:block">목록으로</a>
+</div>
+
+<div class="UpdateFormComment">
+<form action="/updateComment" method="post">
+    <input name="id" th:value="${updateComments.getId()}" style="display:none">
+    <input name="postId" th:value="${updateComments.getPost().getId()}" style="display:none">
+    <h4>수정할 댓글 내용 </h4>
+    <input name="commentContents" th:value="${updateComments.getCommentContents()}">
+    <button type="submit" style="display:block">수정하기</button>
+</form>
+    <button class="btn" onclick="confirmDeleteComment()">삭제하기</button>
+</div>
+
+<script>
+
+    function confirmDeleteComment() {
+        var postId = [[${updateComments.getPost().getId()}]];
+
+        // 사용자에게 확인을 요청하는 대화 상자를 띄웁니다.
+        var result = confirm("정말 댓글을 삭제하시겠습니까?");
+        if (result) {
+            // 사용자가 'OK'를 클릭했다면, 삭제 요청을 보냅니다.
+            fetch('/deleteComment?id=[[${updateComments.getId()}]]', {method: 'DELETE'})
+                .then(r => r.text())
+                .then(() => {
+                   window.location.href = '/post/' + postId;
+                })
+                .catch(error => console.error('Error:', error)); // 오류 처리
+        }
+        // 사용자가 '취소'를 클릭했다면, 아무 것도 하지 않습니다.
+    }
+</script>
+
+</body>
+</html>

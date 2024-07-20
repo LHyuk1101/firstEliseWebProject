@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>REGISTER</title>
+    <!--    <link th:href="@{/main.css}" rel="stylesheet">-->
+</head>
+<body>
+<h2>권한 확인 페이지</h2>
+<div sec:authentication="principal"></div>
+<div sec:authentication="principal.username"></div>
+<div sec:authorize="hasAuthority('일반유저')">일반 유저라 보여요</div>
+<div sec:authorize="hasAuthority('관리자')">관리자라 보여요</div>
+</body>
+</html>

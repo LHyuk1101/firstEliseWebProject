@@ -1,0 +1,102 @@
+/* 전체 폰트 설정 */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding-top: 60px; /* navbar의 고정 위치를 고려한 상단 여백 */
+    background-color: #f4f4f4; /* 배경색 */
+}
+
+/* 메인 보드 스타일 */
+.mainBoard {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mainBoard h2, .mainBoard h4 {
+    color: #333;
+}
+
+/* 글 목록 스타일 */
+.postList {
+    margin-top: 20px;
+}
+
+.posts li {
+    list-style-type: none; /* 기본 목록 스타일 제거 */
+    margin-bottom: 15px; /* 목록 항목 간 여백 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #e0e0e0; /* 테두리 */
+    border-radius: 5px; /* 테두리 둥근 처리 */
+    background-color: #f9f9f9; /* 배경색 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 배경색 및 transform 효과 */
+}
+
+.posts a {
+    display: block; /* 링크를 블록 요소로 만들어 <li> 전체에 링크 적용 */
+    color: #007bff; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.posts li:hover {
+    background-color: #e9ecef; /* 호버 시 배경색 변경 */
+    transform: translateY(-2px); /* 호버 시 약간 위로 움직임 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 호버 시 그림자 효과 */
+}
+
+/*.posts li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.posts a {
+    text-decoration: none;
+    color: #007bff; *//* 링크 색상 *//*
+}*/
+
+/* 버튼 스타일 */
+button {
+    background-color: #007bff; /* 버튼 색상 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* 버튼 호버 색상 */
+}
+
+/* 게시판 목록 스타일 */
+/* Board list style, similar to post list */
+.boardList {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff; /* 배경색 */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.listTitle {
+    color: #333; /* 글자 색상 */
+}
+
+.boards li {
+    list-style-type: none; /* 목록 스타일 제거 */
+    margin-bottom: 10px; /* 각 게시판 항목 간의 여백 */
+}
+
+.boards a {
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #007bff; /* 링크 색상 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .mainBoard, .boardList {
+        width: 90%;
+    }
+}

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
+
+body {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(89,208,255), rgb(255,255,255));
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h2, h4 {
+    color: #333;
+}
+
+.loginArea {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.loginArea form div {
+    margin-bottom: 15px;
+}
+
+.loginArea input {
+    margin-top: 5px;
+    padding: 10px;
+    width: calc(100% - 22px); /* Adjust based on padding */
+    box-sizing: border-box;
+}
+
+.loginArea button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loginArea button:hover {
+    background-color: #0056b3;
+}
+
+.loginArea a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.loginArea a:hover {
+    text-decoration: underline;
+}
